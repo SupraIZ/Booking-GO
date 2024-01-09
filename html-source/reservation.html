@@ -7,24 +7,26 @@
   <title>Bootstrap demo</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <style>
-      .my-footer {
-        height: 5em;
-        background-color: #163b65;
-        margin-top: 1.5em;
-        padding: 1em;
-        color: #FFFFFF;
-        font-size: 80%;
-      }
-      .room-image{
-        max-width: 50%;
-        padding: 0.5%;
-        margin-top: 1em;
-      }
-      .btnsa{
-        margin-top: 0.5em;
-      }
-    </style>
+  <style>
+    .my-footer {
+      height: 5em;
+      background-color: #163b65;
+      margin-top: 1.5em;
+      padding: 1em;
+      color: #FFFFFF;
+      font-size: 80%;
+    }
+
+    .room-image {
+      max-width: 50%;
+      padding: 0.5%;
+      margin-top: 1em;
+    }
+
+    .btnsa {
+      margin-top: 0.5em;
+    }
+  </style>
 </head>
 
 <body>
@@ -71,26 +73,28 @@
   <div class="container">
 
     <div class="row">
-    <div class="col-md-3"></div>
+      <div class="col-md-3"></div>
       <div class="col-md-6">
         <h1 class="mt-5">Search for Availability</h1>
 
-        <form action="reservation.html" method="get">
+        <form action="reservation.html" method="get" novalidate class="needs-validation">
 
           <div class="row">
 
             <div class="col">
-              <div class="form-group" >
+              <div class="form-group">
                 <label for="start_date">Enter Starting Date</label>
-                <input required type="date" class="form-control" id="start_date" aria-describedby="startdateHelp" name="start_date">
+                <input required type="date" class="form-control" id="start_date" aria-describedby="startdateHelp"
+                  name="start_date">
                 <small id="startdateHelp" class="form-text text-muted">Enter your Starting Date</small>
               </div>
             </div>
 
             <div class="col">
-              <div class="form-group" >
+              <div class="form-group">
                 <label for="end_date">Enter Ending Date</label>
-                <input required type="date" class="form-control" id="end_date" aria-describedby="enddateHelp" name="end_date">
+                <input required type="date" class="form-control" id="end_date" aria-describedby="enddateHelp"
+                  name="end_date">
                 <small id="enddateHelp" class="form-text text-muted">Enter your Ending Date</small>
               </div>
             </div>
@@ -113,6 +117,30 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
     crossorigin="anonymous"></script>
+
+    
+  <script>
+    console.log("validation javascript");
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (() => {
+      'use strict'
+
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      const forms = document.querySelectorAll('.needs-validation')
+
+      // Loop over them and prevent submission
+      Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+
+          form.classList.add('was-validated')
+        }, false)
+      })
+    })()
+  </script>
 </body>
 
 </html>
