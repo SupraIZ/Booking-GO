@@ -7,6 +7,9 @@
   <title>Bootstrap demo</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.4/dist/css/datepicker-bs5.min.css">
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/notie/dist/notie.min.css">
+
   <style>
     .my-footer {
       height: 5em;
@@ -22,7 +25,9 @@
       padding: 0.5%;
       margin-top: 1em;
     }
-
+    .notie-container {
+      box-shadow: none;
+    }
     .btnsa {
       margin-top: 0.5em;
     }
@@ -62,10 +67,6 @@
             <a class="nav-link" aria-disabled="true" href="contact.html">Contact</a>
           </li>
         </ul>
-        <!-- <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form> -->
       </div>
     </div>
   </nav>
@@ -79,29 +80,27 @@
 
         <form action="reservation.html" method="get" novalidate class="needs-validation">
 
-          <div class="row">
+          <div class="form-row">
 
             <div class="col">
-              <div class="form-group">
-                <label for="start_date">Enter Starting Date</label>
-                <input required type="date" class="form-control" id="start_date" aria-describedby="startdateHelp"
-                  name="start_date">
-                <small id="startdateHelp" class="form-text text-muted">Enter your Starting Date</small>
-              </div>
-            </div>
 
-            <div class="col">
-              <div class="form-group">
-                <label for="end_date">Enter Ending Date</label>
-                <input required type="date" class="form-control" id="end_date" aria-describedby="enddateHelp"
-                  name="end_date">
-                <small id="enddateHelp" class="form-text text-muted">Enter your Ending Date</small>
+              <div class="row" id="reservation-dates">
+
+                <div class="col">
+                  <input required class="form-control" type="text" name="start" placeholder="Arrival">
+                </div>
+
+                <div class="col">
+                  <input required class="form-control" type="text" name="end" placeholder="Departure">
+                </div>
+
               </div>
+
             </div>
 
           </div>
 
-          <button type="submit" class="btn btn-primary btnsa">Search Availability</button>
+          <button type="submit" id="sax" class="btn btn-primary btnsa">Search Availability</button>
 
         </form>
       </div>
@@ -117,18 +116,13 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
     crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.4/dist/js/datepicker-full.min.js"></script>
+  <script src="https://unpkg.com/notie"></script>
 
-    
   <script>
-    console.log("validation javascript");
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
     (() => {
       'use strict'
-
-      // Fetch all the forms we want to apply custom Bootstrap validation styles to
       const forms = document.querySelectorAll('.needs-validation')
-
-      // Loop over them and prevent submission
       Array.from(forms).forEach(form => {
         form.addEventListener('submit', event => {
           if (!form.checkValidity()) {
@@ -140,6 +134,23 @@
         }, false)
       })
     })()
+
+    const elem = document.getElementById('reservation-dates');
+    const rangepicker = new DateRangePicker(elem, {
+      format: "yyyy-mm-dd",
+    });
+    //this is a demo for notify
+    document.getElementById("sax").addEventListener("click", () => {
+      notify("This is My Message", "success")
+    })
+
+    function notify(msg, msgType){
+      notie.alert({
+        type: msgType,
+        text: msg,
+      })
+    }
+
   </script>
 </body>
 
