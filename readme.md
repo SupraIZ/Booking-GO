@@ -7,4 +7,5 @@ This repository enumerates a booking and reservation project
 - Uses [nosurf](https://github.com/justinas/nosurf) add CSRF protection to all POST requests.
 - Uses [Vanilla JS Datepicker](https://mymth.github.io/vanillajs-datepicker/) to make the date range picker.
 - Uses [Notie](https://github.com/jaredreich/notie?tab=readme-ov-file) to make trigger notifications.
+- Uses [SweetAlert](https://sweetalert2.github.io) to make alert dialog box messages.
 TO RUN THE FILE USE go run ./cmd/web
